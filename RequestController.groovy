@@ -10,20 +10,20 @@ class RequestController {
     	    	
     	if (type == "action.devices.DISCONNECT") {
     		render "{}"
-		} else {
-			String token = request.getHeader("Authorization")
-			token = token.substring(7)
+	} else {
+		String token = request.getHeader("Authorization")
+		token = token.substring(7)
         	StateManager tracker = new StateManager(requestObj.getString("requestId"), token)
         	if (type == "action.devices.EXECUTE") {
     			render tracker.executeFormat(requestObj)
     		} else {
-				if (type == "action.devices.SYNC") {
+			if (type == "action.devices.SYNC") {
        				render tracker.syncFormat()
        			} else {
      				render tracker.queryFormat(requestObj)
        			}
-		  	}
 		}
+	}
 		
     }
 }
